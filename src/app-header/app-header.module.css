@@ -12,7 +12,7 @@
     max-width: 1280px;
     min-height: 56px;
     flex-direction: row;
-  align-items: center;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .navigation {
-composes: wrapper;
+    composes: wrapper;
     margin: 16px 132px 16px 0;
 }
 
