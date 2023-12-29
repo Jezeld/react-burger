@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import popup from '../popup.module.css';
+import modal from './modal.module.css';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
+import ModalOverlay from './modal-overlay/modal-overlay';
 
-function Modal({ children, isOpen, onClose }) {
+function Modal({ children, onClose }) {
     useEffect(() => {
-        if (!isOpen) return;
         const closeByEscape = (e) => {
             if (e.key === 'Escape') {
                 onClose();
@@ -14,7 +14,7 @@ function Modal({ children, isOpen, onClose }) {
 
         document.addEventListener('keydown', closeByEscape);
         return () => document.removeEventListener('keydown', closeByEscape);
-    }, [isOpen, onClose]);
+    }, [onClose]);
 
     const handleOverlay = (e) => {
         if (e.target === e.currentTarget) {
@@ -23,14 +23,11 @@ function Modal({ children, isOpen, onClose }) {
     };
 
     return (
-        <div
-            className={isOpen ? `${popup.popup_opened} ${popup.popup}` : `${popup.popup}`}
-            onClick={handleOverlay}
-        >
-            <div className={popup.popup__container}>
+        <ModalOverlay handleOverlay={handleOverlay}>
+            <div className={modal.popup__container}>
                 <button
                     style={{ position: 'absolute' }}
-                    className={popup.popup__close}
+                    className={modal.popup__close}
                     type="button"
                     onClick={onClose}
                 >
@@ -38,14 +35,14 @@ function Modal({ children, isOpen, onClose }) {
                 </button>
                 {children}
             </div>
-        </div>
+        </ModalOverlay>
     );
 }
 
 Modal.propTypes = {
     children: PropTypes.element.isRequired,
     onClose: PropTypes.func.isRequired,
-    handleOverlay: PropTypes.func.isRequired,
-    closeByEscape: PropTypes.func.isRequired
+    handleOverlay: PropTypes.func,
+    closeByEscape: PropTypes.func
 };
 export default Modal;

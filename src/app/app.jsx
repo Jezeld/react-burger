@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import { createPortal } from 'react-dom';
+import content from './app.module.css';
 import AppHeader from '../app-header/app-header';
 import Burger from '../burger/burger';
 import api from '../utils/api';
 import OrderDetailsModal from '../popup/order-details-modal/order-details-modal';
 import IngredientDetailsModal from '../popup/ingredient-details-modal/ingredient-details-modal';
+import Modal from '../popup/modal/modal';
 
 function App() {
     const [cards, setCards] = useState([]);
-    // const [active, setActive] = useState(true);
     const [isOrderDetailsPopupOpen, setIsOrderDetailsPopupOpen] = useState(false);
     const [selectedCard, setSelectedCard] = useState({});
     const [isIngredientDetailsPopupOpen, setIsIngredientDetailsPopupOpen] = useState(false);
+    const modalRoot = document.getElementById('modals');
 
     const handleGetIngredients = () => {
         api.getInfo()
@@ -30,7 +32,7 @@ function App() {
         setSelectedCard(card);
         setIsIngredientDetailsPopupOpen(true);
     }
-    console.log(selectedCard);
+
     function handleOrderDetailsClick() {
         setIsOrderDetailsPopupOpen(true);
     }
@@ -43,7 +45,7 @@ function App() {
 
     return (
         <>
-            <main className="content">
+            <main className={content.content}>
                 <AppHeader />
                 <Burger
                     cards={cards}
@@ -51,12 +53,20 @@ function App() {
                     handleCardClick={handleCardClick}
                 />
             </main>
-            <OrderDetailsModal isOpen={isOrderDetailsPopupOpen} onClose={closeAllPopups} />
-            <IngredientDetailsModal
-                isOpen={isIngredientDetailsPopupOpen}
-                onClose={closeAllPopups}
-                card={selectedCard}
-            />
+            {isOrderDetailsPopupOpen &&
+                createPortal(
+                    <Modal onClose={closeAllPopups}>
+                        <OrderDetailsModal />
+                    </Modal>,
+                    modalRoot
+                )}
+            {isIngredientDetailsPopupOpen &&
+                createPortal(
+                    <Modal onClose={closeAllPopups}>
+                        <IngredientDetailsModal card={selectedCard} />
+                    </Modal>,
+                    modalRoot
+                )}
         </>
     );
 }

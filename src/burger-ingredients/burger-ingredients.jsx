@@ -67,7 +67,7 @@ function BurgerIngredients(props) {
 
 BurgerIngredients.propTypes = {
     cards: PropTypes.arrayOf(ingredientPropTypes.isRequired).isRequired,
-    card: PropTypes.objectOf(ingredientPropTypes.isRequired).isRequired,
+    card: PropTypes.objectOf(ingredientPropTypes.isRequired),
     handleCardClick: PropTypes.func.isRequired
 };
 export default BurgerIngredients;

@@ -2,16 +2,16 @@ import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-comp
 import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import ingredient from './burger-component.module.css';
 import PropTypes from 'prop-types';
-import ingredientPropTypes from '../../utils/prop-types';
 
 function BurgerComponent({ card }) {
+    console.log(card);
     return (
         <article>
-            <li className="" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <li className={ingredient.wrapper}>
                 <div className={ingredient.flex}>
                     <DragIcon type="primary" />
                     <ConstructorElement
-                        text={card.price}
+                        text={card.name}
                         price={card.price}
                         thumbnail={card.image}
                     />
@@ -22,6 +22,6 @@ function BurgerComponent({ card }) {
 }
 
 BurgerComponent.propTypes = {
-    card: PropTypes.objectOf(ingredientPropTypes.isRequired).isRequired
+    card: PropTypes.object.isRequired
 };
 export default BurgerComponent;

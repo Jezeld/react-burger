@@ -32,7 +32,7 @@ function BurgerCard({ card, handleCardClick }) {
 }
 
 BurgerCard.propTypes = {
-    card: PropTypes.objectOf(ingredientPropTypes.isRequired).isRequired,
+    card: PropTypes.object.isRequired,
     handleCardClick: PropTypes.func.isRequired
 };
 export default BurgerCard;

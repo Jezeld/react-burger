@@ -12,15 +12,7 @@ function BurgerConstructor(props) {
     });
     return (
         <div className={designer.container}>
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '10px',
-                    alignItems: 'flex-end',
-                    justifyContent: 'space-between'
-                }}
-            >
+            <div className={designer.wrapper}>
                 <ConstructorElement type={'top'} isLocked={true} />
                 <div className={designer.ingredients}>
                     <div className={`custom-scroll`}></div>
