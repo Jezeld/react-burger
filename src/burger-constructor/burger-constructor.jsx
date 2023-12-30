@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import designer from './burger-constructor.module.css';
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
@@ -13,17 +13,15 @@ function BurgerConstructor(props) {
         return itm.type !== 'bun';
     });
 
-    console.log('bun>>>>>', bunElement);
-    // console.log('filteredComponent', filteredComponent);
     return (
         <div className={designer.container}>
             <div className={designer.wrapper}>
                 <ConstructorElement
                     type="top"
                     isLocked={true}
-                    // text={bunElement.name}
-                    // price={bunElement.price}
-                    // thumbnail={bunElement.image}
+                    text={bunElement?.name}
+                    price={bunElement?.price}
+                    thumbnail={bunElement?.image}
                 />
 
                 <div className={designer.ingredients}>
@@ -38,9 +36,9 @@ function BurgerConstructor(props) {
                 <ConstructorElement
                     type="bottom"
                     isLocked={true}
-                    // text={`${bunElement.name} (низ)`}
-                    // price={bunElement.price}
-                    // thumbnail={bunElement.image}
+                    text={`${bunElement?.name} (низ)`}
+                    price={bunElement?.price}
+                    thumbnail={bunElement?.image}
                 />
             </div>
         </div>
