@@ -7,6 +7,7 @@ import ingredientPropTypes from '../utils/prop-types';
 
 function Burger(props) {
     const { cards, handleOrderDetailsClick, handleCardClick } = props;
+
     return (
         <section className={burger.burger}>
             <h1 className={`text text_type_main-large mt-10 mb-5`}>Соберите бургер</h1>

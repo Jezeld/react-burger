@@ -17,14 +17,14 @@ class Api {
     }
 
     getInfo() {
-        return this._request(`${this._baseUrl}`, {
+        return this._request(`${this._baseUrl}/ingredients`, {
             headers: this._headers
         });
     }
 }
 
 const api = new Api({
-    baseUrl: 'https://norma.nomoreparties.space/api/ingredients',
+    baseUrl: 'https://norma.nomoreparties.space/api',
     headers: {
         'Content-Type': 'application/json'
     }

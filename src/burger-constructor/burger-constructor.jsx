@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import PropTypes from 'prop-types';
 import designer from './burger-constructor.module.css';
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
@@ -7,13 +7,25 @@ import ingredientPropTypes from '../utils/prop-types';
 
 function BurgerConstructor(props) {
     const { cards } = props;
+
+    const bunElement = cards.find((itm) => itm.type === 'bun');
     const filteredComponent = cards.filter(function (itm) {
         return itm.type !== 'bun';
     });
+
+    console.log('bun>>>>>', bunElement);
+    // console.log('filteredComponent', filteredComponent);
     return (
         <div className={designer.container}>
             <div className={designer.wrapper}>
-                <ConstructorElement type={'top'} isLocked={true} />
+                <ConstructorElement
+                    type="top"
+                    isLocked={true}
+                    // text={bunElement.name}
+                    // price={bunElement.price}
+                    // thumbnail={bunElement.image}
+                />
+
                 <div className={designer.ingredients}>
                     <div className={`custom-scroll`}></div>
                     <ul className={designer.grid}>
@@ -22,7 +34,14 @@ function BurgerConstructor(props) {
                         ))}
                     </ul>
                 </div>
-                <ConstructorElement type={'bottom'} isLocked={true} />
+
+                <ConstructorElement
+                    type="bottom"
+                    isLocked={true}
+                    // text={`${bunElement.name} (низ)`}
+                    // price={bunElement.price}
+                    // thumbnail={bunElement.image}
+                />
             </div>
         </div>
     );

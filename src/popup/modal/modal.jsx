@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import modal from './modal.module.css';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
 import ModalOverlay from './modal-overlay/modal-overlay';
 
+const modalRoot = document.getElementById('modals');
 function Modal({ children, onClose }) {
     useEffect(() => {
         const closeByEscape = (e) => {
@@ -22,7 +24,7 @@ function Modal({ children, onClose }) {
         }
     };
 
-    return (
+    return createPortal(
         <ModalOverlay handleOverlay={handleOverlay}>
             <div className={modal.popup__container}>
                 <button
@@ -35,7 +37,8 @@ function Modal({ children, onClose }) {
                 </button>
                 {children}
             </div>
-        </ModalOverlay>
+        </ModalOverlay>,
+        modalRoot
     );
 }
 

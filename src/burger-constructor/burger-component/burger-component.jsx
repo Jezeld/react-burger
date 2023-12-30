@@ -4,7 +4,6 @@ import ingredient from './burger-component.module.css';
 import PropTypes from 'prop-types';
 
 function BurgerComponent({ card }) {
-    console.log(card);
     return (
         <article>
             <li className={ingredient.wrapper}>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 import content from './app.module.css';
 import AppHeader from '../app-header/app-header';
 import Burger from '../burger/burger';
@@ -13,7 +12,10 @@ function App() {
     const [isOrderDetailsPopupOpen, setIsOrderDetailsPopupOpen] = useState(false);
     const [selectedCard, setSelectedCard] = useState({});
     const [isIngredientDetailsPopupOpen, setIsIngredientDetailsPopupOpen] = useState(false);
-    const modalRoot = document.getElementById('modals');
+
+    useEffect(() => {
+        handleGetIngredients();
+    }, []);
 
     const handleGetIngredients = () => {
         api.getInfo()
@@ -23,10 +25,6 @@ function App() {
             })
             .catch((error) => console.log(`Ошибка: ${error}`));
     };
-
-    useEffect(() => {
-        handleGetIngredients();
-    }, []);
 
     function handleCardClick(card) {
         setSelectedCard(card);
@@ -53,20 +51,16 @@ function App() {
                     handleCardClick={handleCardClick}
                 />
             </main>
-            {isOrderDetailsPopupOpen &&
-                createPortal(
-                    <Modal onClose={closeAllPopups}>
-                        <OrderDetailsModal />
-                    </Modal>,
-                    modalRoot
-                )}
-            {isIngredientDetailsPopupOpen &&
-                createPortal(
-                    <Modal onClose={closeAllPopups}>
-                        <IngredientDetailsModal card={selectedCard} />
-                    </Modal>,
-                    modalRoot
-                )}
+            {isOrderDetailsPopupOpen && (
+                <Modal onClose={closeAllPopups}>
+                    <OrderDetailsModal />
+                </Modal>
+            )}
+            {isIngredientDetailsPopupOpen && (
+                <Modal onClose={closeAllPopups}>
+                    <IngredientDetailsModal card={selectedCard} />
+                </Modal>
+            )}
         </>
     );
 }
