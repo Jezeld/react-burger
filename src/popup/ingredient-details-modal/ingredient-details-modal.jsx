@@ -40,7 +40,7 @@ function IngredientDetailsModal({ card }) {
 }
 
 IngredientDetailsModal.propTypes = {
-    card: PropTypes.objectOf(ingredientPropTypes.isRequired).isRequired
+    card: PropTypes.object.isRequired
 };
 
 export default IngredientDetailsModal;

@@ -3,7 +3,6 @@ import burgerIngredients from '../burger-ingredients/burger-ingredients.module.c
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Counter } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
-import ingredientPropTypes from '../utils/prop-types';
 
 function BurgerCard({ card, handleCardClick }) {
     const handleClick = () => handleCardClick(card);
