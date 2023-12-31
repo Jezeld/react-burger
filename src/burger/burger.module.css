@@ -1,0 +1,21 @@
+.burger {
+    display: flex;
+    max-width: 1240px;
+    height: 912px;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 812px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    width: 100%;
+}
+
+

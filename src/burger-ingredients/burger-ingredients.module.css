@@ -1,0 +1,54 @@
+.wrapper {
+    display: flex;
+}
+
+.tab {
+    text-decoration: none;
+}
+
+
+.category {
+    height: 710px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.grid {
+    margin-bottom: 0;
+    padding: 0;
+    display: grid;
+    column-gap: 24px;
+    row-gap: 32px;
+    grid-template-columns: repeat(auto-fit, 288px);
+}
+
+.burgerCard {
+    list-style: none;
+}
+
+.item {
+    max-width: 272px;
+    min-height: 208px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.img {
+    width: 100%;
+    max-width: 240px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    max-height: 120px;
+}
+
+.icon {
+    display: flex;
+    flex-direction: row;
+}
+
+.caption {
+    text-align: center;
+}
