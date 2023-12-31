@@ -27,12 +27,7 @@ function Modal({ children, onClose }) {
     return createPortal(
         <ModalOverlay handleOverlay={handleOverlay}>
             <div className={modal.popup__container}>
-                <button
-                    style={{ position: 'absolute' }}
-                    className={modal.popup__close}
-                    type="button"
-                    onClick={onClose}
-                >
+                <button className={modal.popup__close} type="button" onClick={onClose}>
                     <CloseIcon type="primary" />
                 </button>
                 {children}

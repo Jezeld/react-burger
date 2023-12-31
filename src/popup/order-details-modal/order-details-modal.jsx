@@ -1,4 +1,3 @@
-import Modal from '../modal/modal';
 import order from './order-details-modal.module.css';
 
 function OrderDetailsModal() {

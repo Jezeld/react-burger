@@ -11,12 +11,7 @@ function BurgerCard({ card, handleCardClick }) {
         <article>
             <li onClick={handleClick} className={burgerIngredients.burgerCard}>
                 <div className={burgerIngredients.item}>
-                    <Counter
-                        style={{ position: 'absolute' }}
-                        count={1}
-                        size="default"
-                        extraClass="m-1"
-                    />
+                    <Counter count={1} size="default" extraClass="m-1" />
                     <img src={card.image} alt={card.name} className={burgerIngredients.img} />
                     <div className={`${burgerIngredients.icon} mt-1 mb-1`}>
                         <span className="text text_type_digits-default mr-2">{card.price}</span>
